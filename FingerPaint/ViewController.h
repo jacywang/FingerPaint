@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DrawBoardView.h"
 
-@interface ViewController : UIViewController
-
+@interface ViewController : UIViewController <Path>
 
 @end
 

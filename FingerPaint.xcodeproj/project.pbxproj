@@ -14,6 +14,7 @@
 		9C074C341B06893B00E2ED7D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C074C331B06893B00E2ED7D /* Images.xcassets */; };
 		9C074C371B06893B00E2ED7D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C074C351B06893B00E2ED7D /* LaunchScreen.xib */; };
 		9C074C431B06893B00E2ED7D /* FingerPaintTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C074C421B06893B00E2ED7D /* FingerPaintTests.m */; };
+		9C074C511B06934900E2ED7D /* DrawBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C074C501B06934900E2ED7D /* DrawBoardView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,8 @@
 		9C074C3C1B06893B00E2ED7D /* FingerPaintTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FingerPaintTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C074C411B06893B00E2ED7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C074C421B06893B00E2ED7D /* FingerPaintTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FingerPaintTests.m; sourceTree = "<group>"; };
+		9C074C4F1B06934900E2ED7D /* DrawBoardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DrawBoardView.h; path = ../DrawBoardView.h; sourceTree = "<group>"; };
+		9C074C501B06934900E2ED7D /* DrawBoardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DrawBoardView.m; path = ../DrawBoardView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +89,8 @@
 				9C074C2D1B06893B00E2ED7D /* ViewController.h */,
 				9C074C2E1B06893B00E2ED7D /* ViewController.m */,
 				9C074C301B06893B00E2ED7D /* Main.storyboard */,
+				9C074C4F1B06934900E2ED7D /* DrawBoardView.h */,
+				9C074C501B06934900E2ED7D /* DrawBoardView.m */,
 				9C074C331B06893B00E2ED7D /* Images.xcassets */,
 				9C074C351B06893B00E2ED7D /* LaunchScreen.xib */,
 				9C074C261B06893B00E2ED7D /* Supporting Files */,
@@ -222,6 +227,7 @@
 				9C074C2F1B06893B00E2ED7D /* ViewController.m in Sources */,
 				9C074C2C1B06893B00E2ED7D /* AppDelegate.m in Sources */,
 				9C074C291B06893B00E2ED7D /* main.m in Sources */,
+				9C074C511B06934900E2ED7D /* DrawBoardView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
