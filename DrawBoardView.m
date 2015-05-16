@@ -21,10 +21,17 @@
 
 -(void)drawRect:(CGRect)rect {
     [super drawRect:rect];
-    NSArray *pathArray = [self.delegate getPathArray];
-    for (NSMutableDictionary *dic in pathArray) {
-        [[dic valueForKey:@"color"] setStroke];
-        [[dic valueForKey:@"path"] stroke];
+    
+//    [[self.delegate getPath] stroke];
+    
+    NSArray *pathArray = [self.delegate getPaths];
+    NSArray *colorArray  = [self.delegate getColors];
+    
+    for (int i = 0; i < pathArray.count; i++) {
+        UIBezierPath *path = [UIBezierPath bezierPath];
+        path = pathArray[i];
+        [colorArray[i] setStroke];
+        [path stroke];
     }
 }
 

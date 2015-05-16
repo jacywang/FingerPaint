@@ -16,14 +16,9 @@
 
 @property (strong, nonatomic) IBOutlet DrawBoardView *drawBoardView;
 @property (strong, nonatomic) UIBezierPath *path;
-@property (strong, nonatomic) IBOutlet UISlider *redSlider;
-@property (strong, nonatomic) IBOutlet UISlider *greenSlider;
-@property (strong, nonatomic) IBOutlet UISlider *blueSlider;
-@property (strong, nonatomic) IBOutlet UILabel *redValueLabel;
-@property (strong, nonatomic) IBOutlet UILabel *greenValueLabel;
-@property (strong, nonatomic) IBOutlet UILabel *blueValueLabel;
-@property (strong, nonatomic) IBOutlet UIButton *colorMix;
-@property (strong, nonatomic) NSMutableArray *pathArray;
+@property (strong, nonatomic) NSArray *paths;
+@property (strong, nonatomic) NSArray *colors;
+@property (assign, nonatomic) NSInteger colorIndex;
 
 @end
 
@@ -38,54 +33,49 @@
     
     [self.drawBoardView addGestureRecognizer:panGesture];
     
-    self.path = [[UIBezierPath alloc] init];
+    self.path = [UIBezierPath bezierPath];
     
-    [self.redSlider addTarget:self action:@selector(getRedValue:) forControlEvents:UIControlEventValueChanged];
-    [self.greenSlider addTarget:self action:@selector(getGreenValue:) forControlEvents:UIControlEventValueChanged];
-    [self.blueSlider addTarget:self action:@selector(getBlueValue:) forControlEvents:UIControlEventValueChanged];
-    
-    self.pathArray = [NSMutableArray array];
+    self.paths = @[[UIBezierPath bezierPath], [UIBezierPath bezierPath], [UIBezierPath bezierPath], [UIBezierPath bezierPath]];
+    self.colors = @[[UIColor blackColor],[UIColor redColor], [UIColor greenColor], [UIColor blueColor]];
+    self.colorIndex = 0;
 }
 
 -(IBAction)moveFinger:(UIPanGestureRecognizer *)sender {
-
     if (sender.state == UIGestureRecognizerStateBegan ) {
         startLocation = [sender locationInView:self.view];
-        [self.path moveToPoint:startLocation];
+        [self.paths[self.colorIndex] moveToPoint:startLocation];
     } else if (sender.state == UIGestureRecognizerStateChanged) {
         currentLocation = [sender locationInView:self.view];
-        [self.path addLineToPoint:currentLocation];
-        
-        NSMutableDictionary *pathDictionary = [[NSMutableDictionary alloc] init];
-        [pathDictionary setValue:self.path forKey:@"path"];
-        [pathDictionary setValue:self.colorMix.backgroundColor forKey:@"color"];
-        
-        [self.pathArray addObject:pathDictionary];
+        [self.paths[self.colorIndex] addLineToPoint:currentLocation];
     }
     
     [self.drawBoardView setNeedsDisplay];
 }
 
-
--(NSMutableArray *)getPathArray {
-    return self.pathArray;
+-(NSArray *)getPaths {
+    return self.paths;
 }
 
-
--(IBAction)getRedValue:(UISlider *)sender {
-    self.redValueLabel.text = [NSString stringWithFormat:@"%0.0f", sender.value];
-    self.colorMix.backgroundColor = [UIColor colorWithRed:[self.redValueLabel.text integerValue]/255 green:[self.greenValueLabel.text integerValue]/255 blue:[self.blueValueLabel.text integerValue]/255 alpha:1.0];
+-(NSArray *)getColors {
+    return self.colors;
 }
 
--(IBAction)getGreenValue:(UISlider *)sender {
-    self.greenValueLabel.text = [NSString stringWithFormat:@"%0.0f", sender.value];
-    self.colorMix.backgroundColor = [UIColor colorWithRed:[self.redValueLabel.text integerValue]/255 green:[self.greenValueLabel.text integerValue]/255 blue:[self.blueValueLabel.text integerValue]/255 alpha:1.0];
+-(UIBezierPath *)getPath {
+    return self.path;
 }
 
--(IBAction)getBlueValue:(UISlider *)sender {
-    self.blueValueLabel.text = [NSString stringWithFormat:@"%0.0f", sender.value];
-    self.colorMix.backgroundColor = [UIColor colorWithRed:[self.redValueLabel.text integerValue]/255 green:[self.greenValueLabel.text integerValue]/255 blue:[self.blueValueLabel.text integerValue]/255 alpha:1.0];
+- (IBAction)redButtonPressed:(UIButton *)sender {
+    self.colorIndex = 1;
 }
+
+- (IBAction)greenButtonPressed:(UIButton *)sender {
+    self.colorIndex = 2;
+}
+
+- (IBAction)blueButtonPressed:(UIButton *)sender {
+    self.colorIndex = 3;
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

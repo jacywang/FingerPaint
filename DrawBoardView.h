@@ -10,7 +10,9 @@
 
 @protocol Path <NSObject>
 
--(NSMutableArray *)getPathArray;
+-(UIBezierPath *)getPath;
+-(NSArray *)getPaths;
+-(NSArray *)getColors;
 
 @end
 
